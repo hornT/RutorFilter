@@ -8,11 +8,9 @@
 		  margin: 0px;
 		  padding: 0px;
 		  background: white;
-		  width: 500px;
-		  height: 320px;
 		}
 		input{
-			width: 400px;
+			width: 1200px;
 		}
 		.btn{
 			width: 50px;
@@ -22,15 +20,15 @@
 			cursor: pointer;
 		}
     </style>
-	<script type="text/javascript" src="popup.js"></script>
+	<script src="options.js"></script>
 </head>
 <body>
 	<input id="keyWords"></input>
 	<br>
 	<input id="summWords"></input>
 	
-	<div class="btn" id="filterBtn" onclick="filter();">Filter</div>
-	<div class="btn" onclick="saveStgs();">Save</div>
+	<div id="status"></div>
+	<button class="btn" id="saveStgs">Save</button>
 </body>
 </html>
 
