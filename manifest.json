@@ -1,0 +1,16 @@
+{
+ "manifest_version": 2,
+ "name": "RutorFilter", // Название расширения
+ "version": "1.0.11", // Номер версии
+ "description": "Filter films", // Описание расширения
+
+ "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+
+ "browser_action": { // Элементы браузера
+  "default_title": "Rutor", // Название кнопки
+  "default_icon": "images/icon.png", // Иконка для кнопки
+  "default_popup": "popup.html" // Всплывающее окно
+ }
+}
