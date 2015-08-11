@@ -10,6 +10,7 @@ function filter(items){
 	// получить все новые
 	var trakers = document.querySelector("#timeline").querySelectorAll(".u0Entry");
 	var ln = trakers.length;
+	var sortMas = {};
 	console.log('ln: %s', ln);
 	for(var i = ln - 1; i >= 0; i--){
 		var title = trakers[i].attributes['data-title'].value;
@@ -23,6 +24,44 @@ function filter(items){
 			var closeImg = trakers[i].querySelector('div').querySelector('img');
 			closeImg.click();
 		}
+		else{
+			if(sortMas[title] === undefined)
+				sortMas[title] = 0;
+			sortMas[title]++;
+		}
+	}
+	
+	var tuples = [];
+
+	for (var key in sortMas)
+	  tuples.push([key, sortMas[key]]);
+
+	tuples.sort(function(a, b) {
+		a = a[1];
+		b = b[1];
+
+		return a > b ? -1 : (a < b ? 1 : 0);
+	});
+	
+	var filmS = "";
+	for (var i = 0; i < tuples.length; i++) {
+		var key = tuples[i][0];
+		var value = tuples[i][1];
+
+		// do something with key and value
+		filmS += "|" + key;
+	}
+	filmS = prompt("Conf", filmS);
+	if(filmS !== null){
+		keyWordsReg += filmS;
+		chrome.storage.sync.set({
+			keyWords: keyWords,
+			summWords: summWords
+			}, function() {
+			setTimeout(function() {
+			  alert("Save done");
+			}, 750);
+		 });
 	}
 		
 	console.log('end');
