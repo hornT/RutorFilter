@@ -8,28 +8,33 @@ function filter(items){
 	console.log('keyWordsSummReg: %s', keyWordsSummReg);
 
 	// получить все новые
-	var trakers = document.querySelector("#timeline").querySelectorAll(".u0Entry");
+	// (\(((19\d{2})|(200\d)|(201[1234]))\))|Online
+	// Сериалы|Музыка|Телевизор|Софт|Научно-популярные фильмы|Наши фильмы|Мультипликация
+
+	var trakers = document.querySelector(".list-entries").querySelectorAll(".unread");
 	var ln = trakers.length;
 	var sortMas = {};
 	console.log('ln: %s', ln);
 	for(var i = ln - 1; i >= 0; i--){
 		var title = trakers[i].attributes['data-title'].value;
-		var summary = trakers[i].querySelector('.u0Summary').innerHTML;
+		var summary = trakers[i].querySelector('.summary').innerHTML;
 		
 		var skip = keyWordsReg.test(title) || keyWordsSummReg.test(summary);
 		//console.log('i: %s, skip: %s, title: %s', i, skip, title);
 		
 		if(skip){
 			console.log('delete: %s', title);
-			var closeImg = trakers[i].querySelector('div').querySelector('img');
+			var closeImg = trakers[i].querySelector('.icon-fx-cross-ios-sm-black');
 			closeImg.click();
 		}
-		else{
-			if(sortMas[title] === undefined)
-				sortMas[title] = 0;
-			sortMas[title]++;
-		}
+		// else{
+		// 	if(sortMas[title] === undefined)
+		// 		sortMas[title] = 0;
+		// 	sortMas[title]++;
+		// }
 	}
+
+	return;
 	
 	var tuples = [];
 

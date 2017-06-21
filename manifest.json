@@ -1,7 +1,7 @@
 {
  "manifest_version": 2,
  "name": "RutorFilter", // Название расширения
- "version": "1.0.13", // Номер версии
+ "version": "1.0.14", // Номер версии
  "description": "Filter films", // Описание расширения
 
  "permissions": [
