@@ -17,6 +17,7 @@ function save_options() {
 
 // stored in chrome.storage.
 function restore_options() {
+	console.log('addEventListener2');
 	document.getElementById('saveStgs').addEventListener('click', save_options);
 	
   // 
