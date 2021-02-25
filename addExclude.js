@@ -1,20 +1,22 @@
 function addNameToExclude(items){
-	var selection = window.getSelection().toString();
+	const selection = window.getSelection().toString();
 	console.log('selection: ' + selection);
-	//alert(window.getSelection().toString());
 
-	var newKeyWords = items.keyWords + '|' + selection;
+	const newFilms = items.films == '' ? selection : items.films + '|' + selection;
 	console.log('keyWords: ' + items.keyWords);
 	console.log('summWords: ' + items.summWords);
-	console.log('keyWords2: ' + newKeyWords);
+	console.log('films: ' + items.films);
+	console.log('newFilms: ' + newFilms);
 
 	chrome.storage.sync.set({
-    keyWords: newKeyWords,
-    summWords: items.summWords
+		keyWords: items.keyWords,
+		summWords: items.summWords,
+		films: newFilms
 	  }, function() { });
 }
 
-chrome.storage.sync.get({
+  chrome.storage.sync.get({
     keyWords: '',
-    summWords: ''
+    summWords: '',
+	films: ''
 }, addNameToExclude);
