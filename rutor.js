@@ -60,8 +60,19 @@ async function filter(items){
 		const closeImg = trakers[i].querySelector('.icon-fx-cross-ios-sm-black');
 		closeImg.click();
 	}
+
+	sortFilms();
 		
 	console.log('end');
+}
+
+function sortFilms(){
+	const entries = document.querySelector(".list-entries");
+	const list = entries.querySelectorAll(".entry--unread");
+
+	[...list]
+	.sort((a, b) => a.attributes['data-title'].value > b.attributes['data-title'].value ? 1 : -1)
+	.forEach(node => entries.appendChild(node));
 }
 
   fetch('https://unpkg.com/@sifrr/storage@latest/dist/sifrr.storage.min.js')
