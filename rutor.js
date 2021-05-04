@@ -9,7 +9,7 @@ async function filter(items){
 	const films = await storage.keys().then(keys => keys);
 	let tmpFilms = films.join('|');
 	if(items.films != ''){
-		tmpFilms += `${tmpFilms}|${items.films}`.replace(/\|/, '');
+		tmpFilms = `${tmpFilms}|${items.films}`.replace(/\|/, '');
 
 		const filmItems = items.films.split('|');
 		filmItems.forEach(e => {
@@ -57,8 +57,8 @@ async function filter(items){
 		if(!skip) continue;
 
 		console.log('delete: %s', title);
-		const closeImg = trakers[i].querySelector('.icon-fx-cross-ios-sm-black');
-		closeImg.click();
+		const closeImg = trakers[i].querySelector('.EntryHideButton');
+		if(closeImg) closeImg.click();
 	}
 
 	sortFilms();
